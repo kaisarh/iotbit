@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+		var opts = {sendMethod: 'auto'};
+		  // Replace the data source URL on next line with your data source URL.
+		  var query = new google.visualization.Query('/data', opts);
+
+		  // Send the query with a callback function.
+		  query.send(handleResponse);	  
+      }
+	  
+	function handleResponse(response) {
+	  setTimeout(drawChart, 500);
+
+	  var data = response.getDataTable();
+	  
+        var options = {
+          title: 'Microbit Data',
+          legend: { position: 'bottom' },
+			width: 900,
+			height: 600,
+			vAxes: {
+			  0: {title: 'Range'},
+			},
+			hAxes: {
+			  0: {title: 'Time'},
+			}		
+        };
+		
+	  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+	  chart.draw(data, options);
+	}
+	  
+    </script>
+  </head>
+  <body>
+    <div id="chart_div"></div>
+  </body>
+</html>
