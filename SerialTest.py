@@ -13,7 +13,7 @@ import serial
 import SerialData
 
 DEBUG = False
-COM_PORT = "COM9"
+COM_PORT = "/dev/ttyACM0"
 COM_BAUD = 115200
 
 data = []

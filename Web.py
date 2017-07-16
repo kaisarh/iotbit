@@ -18,7 +18,7 @@ import SerialData
 import gviz_api
 
 MAX_DATA_COUNT = 100
-COM_PORT = "COM9"
+COM_PORT = "/dev/ttyACM0"
 COM_BAUD = 115200
 
 app = Flask(__name__)
